@@ -14,22 +14,14 @@ export class HeroesComponent implements OnInit {
   //create a property to represent the HEROES data imported from the mock-heroes file
   heroes: Hero[] = [];
 
-  //?: means selectedHero is of type Hero if it exists
-  selectedHero?: Hero;
-
   //constructor shouldn't do anything- just wire constructor parameters to properties
-  constructor(private heroService: HeroService, private messageService: MessageService) { }
+  constructor(private heroService: HeroService) { }
   
   //get the heroes when the component loads
   ngOnInit(): void {
     this.getHeroes();
   }
   
-  //assigns clicked hero from template to selectedHero property above
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-  }
   //function to retrieve the heroes from the service
   getHeroes(): void {
     this.heroService.getHeroes()
